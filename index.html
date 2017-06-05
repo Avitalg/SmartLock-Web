@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<link rel="stylesheet" href="styles/css/main.css">
+	<script src="scripts/general.js"></script>
+	<script src="scripts/login.js"></script>
+</head>
+<body>
+	<header id="mainHeader">
+		<nav>
+			<div id="mainTitle">
+				Smart Lock
+			</div>
+			<div id="mobileBar">
+			</div>
+			<ul id="navBar">
+				<li class="selected"><a href="index.html">Home</a></li>
+				<li id="logs"><a href="logs.html">Logs</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main id="mainContent">
+		<div id="news">
+			<img src="images/house2.jpg" alt="house">
+			<div id="newsData">
+				<h2>Welcome</h2>
+				<p>The end of home keys</p>
+				<button class="read-more">READ MORE</button>
+			</div>
+		</div>
+	</main>
+	<footer>
+	</footer>
+	<div id="login-popup">
+		<div class="login-content">
+			<div class="close-btn">x</div>
+			<div class="popup-text">
+				<h2>LOGIN</h2>
+				<div>
+					<form method="post" id="login-form">
+						<input name="email" type="email" placeholder="username">
+						<input name="password" type="password" placeholder="password">
+						<input id="loginBtn" type="submit" name="submit">
+					</form>
+					<p class="error-msg"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
