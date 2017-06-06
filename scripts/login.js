@@ -8,8 +8,18 @@ $(document).ready(function(){
 	$("#loginBtn").click(function(e){
 		 e.preventDefault();
 		 var url = "https://smartlockproject.herokuapp.com/api/login"; 
-    	var jqxhr = $.post( url, { username: $("input[name=email]").val(), password: $("input[name=password]").val() }, function(data) {
-		  console.dir(data);
+
+		 $.ajax({
+		  method: "POST",
+		  url: url,
+		  xhrFields: {
+	      withCredentials: true
+		   },
+		   cache: false,
+		   crossDomain: true,
+		  data: { username: $("input[name=email]").val(), password: $("input[name=password]").val() },
+		  success: function(data){
+	         console.dir(data);
 
 		  switch(data.status){
 		  	case "success":
@@ -21,20 +31,10 @@ $(document).ready(function(){
 		  	case "error":
 		  		$(".error-msg").html(data.message);
 		  		break;
-		  }
+			  }
 
-		})
-		  .done(function() {
-		    //alert( "second success" );
-		  })
-		  .fail(function(e) {
-		    //alert( "error" );
-		    console.dir(e.responseText);
-		    var error = JSON.parse(e.responseText);
-		    $(".error-msg").html(error.message);
-		  })
-		  .always(function() {
-		    //alert( "finished" );
-		  });
+			}
 		});
+	});
+		
 });

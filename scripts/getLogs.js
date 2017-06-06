@@ -23,6 +23,10 @@ var getLogs = function(username){
 	   xhrFields: {
 	      withCredentials: true
 	   },
+	   cache: false,
+	   crossDomain: true,
+	   dataType: 'json',
+	   method: "GET",
 	   success: function(data){
 	        if(data.status == "error"){
 				$("#logContent").html("not logged in");
