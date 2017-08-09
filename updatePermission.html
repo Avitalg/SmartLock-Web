@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Add Permission</title>
+	<link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<link rel="stylesheet" href="styles/css/main.css">
+	<script src="scripts/general.js"></script>
+	<script src="scripts/login.js"></script>
+	<script src="scripts/addPermission.js"></script>
+	<script src="scripts/updatePermission.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<header id="mainHeader">
+		<div class="greeting">
+		</div>
+		<nav>
+			<ul id="anonymous">
+				<li id="login">Login</li>
+				<li id="open-account" class="selected"><a href="openAccount.html">Open Account</a></li>
+			</ul>
+		</nav>
+		<nav>
+			<div id="mainTitle">
+				Smart Lock
+			</div>
+			<div id="mobileBar">
+			</div>
+			<ul id="navBar">
+				<li><a href="index.html">Home</a></li>
+				<li class="loggedin"><a href="logs.html">Logs</a></li>
+				<li class="loggedin"><a href="permissions.html">Manage Locks</a></li>
+				<li class="loggedin"><a href="accessLocks.html">Access Locks</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			
+		</nav>
+	</header>
+	<main id="mainContent">
+		<section id="addPermission">
+			<h2>Update Permission</h2>
+			<div class="back">See All Permissions</div>
+			<div class="updatePermission">
+				<form action="" method="post">
+					<input type="email" name="username" placeholder="username" required disabled="">
+					<div class="freq">
+						<h3>Frequency</h3>
+						<label for="always">always</label><input type="radio" id="always" name="freq" value="always" required="">
+						<label for="once">once</label><input type="radio" id="once" name="freq" value="once" required="">
+					</div>
+					<div class="type">
+						<h3>type</h3>
+						<label for="manager">manager</label><input type="radio" id="manager" name="type" value="0" required="">
+						<label for="standard">standard</label><input type="radio" id="standard" name="type" value="2" required="">
+						<label for="fingerprint">with fingerprint</label><input type="radio" id="fingerprint" name="type" value="1" required="">
+					</div>
+					<div class="once">
+						<input type="date" name="date">
+						<label>start time</label><input type="time" name="start-time" value="00:00">
+						<label>end time</label><input type="time" name="end-time" value="00:00">	
+					</div>
+					<div class="always">
+						<section>
+							<h3>Sunday</h3>
+							<label>start time</label><input type="time" name="start1" value="00:00">
+							<label>end time</label><input type="time" name="end1" value="00:00">	
+						</section>
+						<section>
+							<h3>Monday</h3>
+							<label>start time</label><input type="time" name="start2" value="00:00">
+							<label>end time</label><input type="time" name="end2" value="00:00">
+						</section>
+						<section>
+							<h3>Tuesday</h3>
+							<label>start time</label><input type="time" name="start3" value="00:00">
+							<label>end time</label><input type="time" name="end3" value="00:00">	
+						</section>
+						<section>
+							<h3>Wednesday</h3>
+							<label>start time</label><input type="time" name="start4" value="00:00">
+							<label>end time</label><input type="time" name="end4" value="00:00">
+						</section>
+						<section>
+							<h3>Thursday</h3>
+							<label>start time</label><input type="time" name="start5" value="00:00">
+							<label>end time</label><input type="time" name="end5" value="00:00">
+						</section>
+						<section>
+							<h3>Friday</h3>
+							<label>start time</label><input type="time" name="start6" value="00:00">
+							<label>end time</label><input type="time" name="end6" value="00:00">
+						</section>
+						<section>
+							<h3>Saturday</h3>
+							<label>start time</label><input type="time" name="start7" value="00:00">
+							<label>end time</label><input type="time" name="end7" value="00:00">
+						</section>
+					</div>
+					
+					<input type="text" name="lock" placeholder="lock id"><br>
+					<input id="updatePer" type="submit" name="submit" value="SUBMIT">
+				</form>	
+			</div>	
+			<div class="update-msg"></div>
+		</section>
+	</main>
+	<div id="login-popup">
+		<div class="login-content">
+			<div class="close-btn">x</div>
+			<div class="popup-text">
+				<div id="loginWrap">
+					<h2>LOGIN</h2>
+					<form method="post" id="login-form">
+						<input name="email" type="email" placeholder="username">
+						<input name="password" type="password" placeholder="password">
+						<input id="loginBtn" type="submit" name="submit">
+					</form>
+					<p class="login-error-msg"></p>
+				</div>
+				<div id="verificationWrap">
+					<h2>Email Verification</h2>
+					<p id="sendCode">Send Code</p>
+					<form method="post" id="verification-form">
+						<input type="text" name="num1">
+						<input type="text" name="num2">
+						<input type="text" name="num3">
+						<input type="text" name="num4">
+						<input id="verification-btn" type="submit" name="submit">
+					</form>
+					<p class="verification-error-msg"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div id="comanyList" class="footerSec">
+			<ul class="footerNav">
+				<li><a href="#">Company</a></li>
+				<li><a href="about.html">about</a></li>
+				<li><a href="guide.html">guide</a></li>
+				<li><a href="contact.html">contact us</a></li>
+			</ul>
+		</div>
+		<div id="userList" class="footerSec loggedin">
+			<ul class="footerNav">
+				<li><a href="#">User</a></li>
+				<li><a href="logs.html">Logs</a></li>
+				<li><a href="permissions.html">Manage Locks</a></li>
+				<li><a href="accessLocks.html">Access Locks</a></li>
+			</ul>
+		</div>
+		<div id="accountList" class="footerThird loggedin">
+			<ul class="footerNav">
+				<li><a href="#">Account</a></li>
+				<li><a href="myAccount.html">My Account</a></li>
+				<li><a href="changePassword.html">Change Password</a></li>
+				<li><a href="ForgotPassword.html">Forgot Password</a></li>
+			</ul>
+		</div>
+		<div>
+			
+		</div>
+		<div id="rights">
+			All rights reserved to Avital Glazer, Zohar Tzfanya and Nir Shchori.
+		</div>
+	</footer>
+</body>
+</html>

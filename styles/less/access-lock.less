@@ -1,0 +1,120 @@
+#accessLocks{
+	text-align: center;
+	
+	.fa{
+	    font-size: 70px;
+    	cursor: pointer;
+    	margin: 3px;
+    }
+
+	.fa-unlock-alt{
+		color: green;
+		-webkit-transition: color 2s; /* Safari */
+    	transition: color 2s;
+
+		&:hover{
+			color: #aedd94;
+		}
+	}
+
+	.fa-lock{
+		color: red;
+		transition: color 2s;
+
+		&:hover{
+			color: #ff9999;
+		}
+	}
+
+	.lockWrap {
+		.loader{
+			display: none;
+
+			img{
+				width: 15px;
+			}	    
+		}
+	}
+
+	#locksData{
+		margin: 0 auto;
+    	width: 80%;
+
+    	.lockWrap{
+    		border-bottom: 1px dotted black;
+    		text-align: center;
+    		margin: 16px;
+    		position: relative;
+    		padding: 10px;
+
+    		.addFingerPrint{
+    			width: 50px;
+			    height: 50px;
+			    background: url(../../images/addFinger.png) no-repeat;
+			    background-size: contain;
+			    position: absolute;
+			    top: 0;
+			    right: 13px;
+			    cursor: pointer;
+    		}
+
+    		.removeFingerPrint{
+    			width: 30px;
+			    height: 30px;
+			    background: url(../../images/removeFinger.png) no-repeat;
+			    background-size: contain;
+			    position: absolute;
+			    top: 0;
+			    right: 13px;
+			    cursor: pointer;
+    		}
+
+    		.seePer{
+    			font-weight: 700;
+    			cursor: pointer;
+    			font-size: 11px;
+    		}
+
+    		.perList{
+	    		display:none;
+	    		font-size: 12px;
+
+	    		span{
+	    		    font-weight: bold;
+	    		}
+	    	}
+
+    	}
+
+    	ul{
+		    list-style-type: none;
+    		text-align: center;
+    	}
+
+    	.errMsg{
+    			display: none;
+    		    background: #414141;
+			    color: #fff;
+			    position: fixed;
+			    padding: 25px;
+			    border-radius: 5px;
+			    top: 50%;
+    			left: 50%;
+			    transform: translate(-50%, -50%);
+			    -webkit-transform: translate(-50%,-50%);
+       			-ms-transform: translate(-50%,-50%);
+  				z-index: 5;
+  				font-weight: bold;
+
+
+    		.close-btn{
+    			cursor: pointer;
+    			font-size: 10px;
+    			position: absolute;
+			    top: 4px;
+			    right: 7px;
+    		}
+    	}
+	}
+
+}

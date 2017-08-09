@@ -1,10 +1,40 @@
-*{
+	*{
 	margin: 0;
 	padding: 0;
 }
 
+html {
+   height: 100%;
+}
+
 body{
-	font-family: "Arial", Gadget, sans-serif;
+	font-family: 'Nunito', sans-serif;
+	padding-bottom: 150px; 
+	position: relative;
+   	min-height: 100%;
+}
+
+.close-btn{
+	cursor: pointer;
+}
+
+#anonymous{
+	text-align: left;
+	margin-left: 10px;
+	li{
+		cursor: pointer;
+	    display: inline-block;
+	    margin-left: 10px;
+	    color: #000;
+	    background: gainsboro;
+	    border-radius: 5px;
+	    padding: 5px;
+
+	    a{
+	    	color: black;
+	    	text-decoration: none;
+	    }
+	}
 }
 
 #mainHeader{
@@ -12,45 +42,80 @@ body{
     text-align: center;
     padding: 44px 0 50px;
 
+    .greeting {
+ 	   text-align: left;
+ 	   margin: 0 40px;
+ 	   position: relative;
+
+ 	   div{
+ 	   	display: inline-block;
+ 	   }
+
+
+ 	   #user{
+ 	   		margin-left: 30px;
+ 	   		a{
+ 	   			margin-left: 5px;
+ 	   		}
+ 	   }
+
+ 	   #profile{
+ 	   		border-radius: 50%;
+		    width: 20px;
+		    height: 20px;
+		    background: url(../../images/anonymous.jpg) no-repeat;
+		    background-size: contain;
+		    margin-right: 7px;
+		    cursor: pointer;
+		    position: absolute;
+ 	   }
+	}
+
 	#mainTitle{
 		font-family: 'Aclonica', sans-serif;
 		font-size: 50px;
 		color: #7a7a7a;
 	}
 
-	li{
-		display: inline;
-		color: #000;
-		padding: 0 19px;
-		list-style-type: none;
-		text-align: center;
+	#navBar{
+		li{
+			display: inline;
+			color: #000;
+			padding: 0 19px;
+			list-style-type: none;
+			text-align: center;
 
-		&#logs{
-			display: none;
-		}
-
-		a{
-		    margin: 0;
-		    padding: 0 0 5px;
-		    text-decoration: none;
-		    font-size: 14px;
-		    text-transform: uppercase;
-		    font-family: "Arial Black", Gadget, sans-serif;
-
-		    &, &:visited, &:active{
-				color: #000;
+			&.loggedin{
+				display: none;
 			}
 
-			&:hover{
-				color: #7a7a7a;
+			a{
+			    margin: 0;
+			    padding: 0 0 5px;
+			    text-decoration: none;
+			    font-size: 14px;
+			    text-transform: uppercase;
+			    font-family: "Arial Black", Gadget, sans-serif;
+			    -webkit-transition: color 1s; /* Safari */
+    			transition: color 1s;
+
+			    &, &:visited, &:active{
+					color: #000;
+				}
+
+				&:hover{
+					color: #7a7a7a;
+				}
+
 			}
 
-		}
+			&.selected a{
+				color: #aedd94;
+			}
+		}	
+	}
 
-		&.selected a{
-			color: #aedd94;
-		}
-	}	
+	
 }
 
 
@@ -61,21 +126,19 @@ body{
     	margin: 0 auto;
 
 		img{
-			width:100%;
+			width: 300px;
 		}
 
 		#newsData{
-		    background: rgba(100,100,100,.4);
 		    bottom: 4px;
 		    right: 0;
-		   	left: 0;
 		    position: absolute;
 		    font-family: "Arial Black",Gadget,sans-serif;
-		    color: #fff;
-		    width: 100%;
+		    color: rgba(100,100,100,.4);
+		    width: 50%;
 		    text-align: center;
 		    font-size: 24px;
-		    height: 50%;
+		    height: 70%;
 
 		    button{
 		    	background-color: rgba(0, 0, 0, 1);
@@ -97,17 +160,115 @@ body{
 		    
 		}
 
+	}
 
+
+	.firstSec{
+		width: 70%;
+		margin: 0 auto;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	#wrapFirst{
+	    background: url(../../images/welcome-to-our-home.jpg) no-repeat 50%;
+    	height: 357px;
+    	background-attachment: fixed;
+	}
+	#wrapThird{
+		margin: 10px 0 0;
+		background: #f8f8f6;
+		padding: 20px;
+
+	}
+
+	.mainSec{
+		margin: 30px auto;
+		width: 80%;
+	}
+
+	.secSections{
+		width: 70%;
+    	margin: 0 auto;
+    	margin-top: 15px;
+    	font-size: 14px;
+	}
+
+	.thirdSec{
+		margin: 0 auto;
+		margin-top: 30px;
+		margin-bottom: 20px;
+		width: 70%;
+
+		h2{
+		    text-align: center;
+    		margin: 18px;
+		}
+
+		article{
+			width: 32%;
+			display: inline-block;
+			font-size: 12px;
+			text-align: center;
+			border-radius: 5px;
+			h3{
+				font-size: 20px;
+			}
+
+		}
 	}
 }
 
 
-@media only screen and (max-width: 480px) {
+.clear{
+	clear: both;
+}
 
-	#mainContent{
-		#news{
-			#newsData{
+
+footer{
+	background: #000;
+	height: 150px;
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	color: #fff;
+
+	#accountList, #userList{
+		display: none;
+	}
+
+	.footerSec{
+		display: inline-block;
+	}
+
+	#rights{
+	    position: absolute;
+	    bottom: 0;
+	    font-size: 10px;
+	    margin: 5px;
+	}
+
+	.footerNav{
+
+
+		li{
+			list-style-type: none;
+			margin: 5px;
+
+			&:first-child{
 				font-size: 15px;
+				text-decoration: underline;
+			}
+
+			&:not(first-child){
+				font-size: 13px;
+			}
+
+			a{
+				text-decoration: none;
+				color: #fff;
 			}
 		}
 	}

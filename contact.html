@@ -3,13 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>contact</title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="scripts/getLogs.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<script src="scripts/general.js"></script>
+	<script src="scripts/contact.js"></script>
+	<script src="scripts/login.js"></script>
 	<link rel="stylesheet" href="styles/css/main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<header id="mainHeader">
+		<div class="greeting">
+		</div>
+		<nav>
+			<ul id="anonymous">
+				<li id="login">Login</li>
+				<li id="open-account"><a href="openAccount.html">Open Account</a></li>
+			</ul>
+		</nav>
 		<nav>
 			<div id="mainTitle">
 				Smart Lock
@@ -18,11 +31,90 @@
 			</div>
 			<ul id="navBar">
 				<li><a href="index.html">Home</a></li>
-				<li id="logs"><a href="logs.html">Logs</a></li>
+				<li class="loggedin"><a href="logs.html">Logs</a></li>
+				<li class="loggedin"><a href="permissions.html">Manage Locks</a></li>
+				<li class="loggedin"><a href="accessLocks.html">Access Locks</a></li>
 				<li><a href="about.html">About</a></li>
 				<li class="selected"><a href="contact.html">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
+	<main id="contactUs">
+		<div class="wrapper">
+		<div class="contact-text">
+			You can contact us via the form below or by sending an email directly to the email address: info@smartlockproj.com.
+		</div>
+			<h2>CONTACT</h2>
+			<section>
+				<form action="#" method="post" id="contactUsForm">
+					<input type="text" name="username" placeholder="email" required="">
+					<textarea rows="4" name="message" cols="50" placeholder="Please write to us..." required=""></textarea>
+					<button type="submit">SUBMIT</button>
+				</form>
+				<div class="message_data"></div>
+			</section>
+		</div>
+	</main>
+	<div id="login-popup">
+		<div class="login-content">
+			<div class="close-btn">x</div>
+			<div class="popup-text">
+				<div id="loginWrap">
+					<h2>LOGIN</h2>
+					<div class="forgotPass"><a href="forgotPassword.html">forgot password</a></div>
+					<form method="post" id="login-form">
+						<input name="email" type="email" placeholder="username">
+						<input name="password" type="password" placeholder="password">
+						<input id="loginBtn" type="submit" name="submit">
+					</form>
+					<p class="login-error-msg"></p>
+				</div>
+				<div id="verificationWrap">
+					<h2>Email Verification</h2>
+					<p id="sendCode">Send Code</p>
+					<form method="post" id="verification-form">
+						<input type="text" name="num1">
+						<input type="text" name="num2">
+						<input type="text" name="num3">
+						<input type="text" name="num4">
+						<input id="verification-btn" type="submit" name="submit">
+					</form>
+					<p class="verification-error-msg"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div id="comanyList" class="footerSec">
+			<ul class="footerNav">
+				<li><a href="#">Company</a></li>
+				<li><a href="about.html">about</a></li>
+				<li><a href="guide.html">guide</a></li>
+				<li><a href="contact.html">contact us</a></li>
+			</ul>
+		</div>
+		<div id="userList" class="footerSec loggedin">
+			<ul class="footerNav">
+				<li><a href="#">User</a></li>
+				<li><a href="logs.html">Logs</a></li>
+				<li><a href="permissions.html">Manage Locks</a></li>
+				<li><a href="accessLocks.html">Access Locks</a></li>
+			</ul>
+		</div>
+		<div id="accountList" class="footerThird loggedin">
+			<ul class="footerNav">
+				<li><a href="#">Account</a></li>
+				<li><a href="myAccount.html">My Account</a></li>
+				<li><a href="changePassword.html">Change Password</a></li>
+				<li><a href="ForgotPassword.html">Forgot Password</a></li>
+			</ul>
+		</div>
+		<div>
+			
+		</div>
+		<div id="rights">
+			All rights reserved to Avital Glazer, Zohar Tzfanya and Nir Shchori.
+		</div>
+	</footer>
 </body>
 </html>

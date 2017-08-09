@@ -1,0 +1,96 @@
+#addPermission, #openAccount, #contactUs, #forgotPassword, #changePassword{
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+	margin-bottom: 30px;
+	position: relative;
+
+	.contact-text{
+		margin: 20px;
+	}
+
+	input, textarea {
+		margin: 0 auto;
+		line-height: 30px;
+		border-radius: 5px;
+		width: 40%;
+		display: block;
+		border: 1px solid black;
+		margin-top: 10px;
+	}
+
+	button{
+		border-radius: 5px;
+		margin: 10px;
+		width: 40%;
+		line-height: 70px;
+		border: 1px solid black;
+		cursor: pointer;
+	}
+
+	.update-msg{
+	    color: brown;
+    	font-size: 13px;
+	}
+
+	input[name="lock"]{
+		display: none;
+	}
+
+	#manager{
+		display: inline-block;
+		width: inherit;
+		cursor: pointer;
+	}
+}
+
+#openAccount{
+	.error-msg{
+		margin: 10px;
+		font-weight: bold;
+	}
+}
+
+
+#addPermission{
+	.always, .once{
+		display: none;
+	}
+
+	.back{
+	    position: absolute;
+	    top: 0;
+	    font-size: 13px;
+	    margin-left: 15px;
+	    color: green;
+	    cursor: pointer;
+
+	     &:hover{
+	        color: greenyellow;
+	    }
+	}
+
+	.freq{
+		margin: 15px 0;
+		input[type=radio]{
+			width: 10%;
+			display: inline-block;		
+		}
+	}
+
+	.type{
+		margin: 15px 0;
+		input[type=radio]{
+			width: 20px;
+			display: inline-block;
+			margin-left: 5px;		
+		}
+	}
+}
+
+	
+.forgot-form-msg, .change-form-msg{
+	text-align: center;
+	font-size: 14px;
+	color: red;
+}

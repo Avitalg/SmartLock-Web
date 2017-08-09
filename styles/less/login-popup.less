@@ -1,43 +1,69 @@
 #login-popup{
-	position: absolute;
+	position: fixed;
+    display: none;
     top: 0;
     left: 0;
     background: rgba(100,100,100,0.7);
     right: 0;
     bottom: 0;
+    z-index: 5;
+
+    .forgotPass a{
+        color: white;
+    }
 
     .login-content{
         background: #232323;
 	    width: 300px;
-	    height: 200px;
 	    top: 50%;
 	    left: 50%;
 	    position: absolute;
 	    transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
 	    color: #fff;
+        border-radius: 16px;
+        padding: 26px 0;
     }
 
-    .error-msg{
+    .login-error-msg{
     	color: red;
+        font-size: 14px;
     }
 
     .close-btn{
-        margin: 6px 12px;
-    	float: right;
+        position: absolute;
+        top: 8px;
+        right: 12px;
+    }
+
+    h2{
+        margin: 13px 0 4px;
+    }
+
+    input#loginBtn, input#verification-btn {
+        border: 1px solid white;
+        background: black;
+        color: white;
+        font-size: 19px;
+        margin-top: 4px;
+        line-height: 40px;
     }
 
     input{
-    	width: 90%;
-    	line-height: 20px;
+    	width: 80%;
+    	line-height: 30px;
     	border-radius: 4px;
     	margin: 5px 2px;
     	display: inline-block;
+        border-radius: 4px;
+        padding-left: 5px;
     }
 
     .popup-text{
     	text-align: center;
     	margin: 0 auto;
-    	margin-top: 35px;
+        margin-top: 11px;
     }
 
     button{
@@ -48,5 +74,36 @@
     	border: 1px solid black;
     	margin: 15px;
     	border-radius: 5px;
+    }
+
+
+    #verificationWrap{
+        display: none;
+
+        input[type=text]{
+            width: 17%
+        }
+
+        #verification-btn{
+            margin-top: 10px;
+        }
+
+        #verification-form{
+            margin-top: 20px;
+        }
+
+        #sendCode{
+            cursor: pointer;
+            font-weight: 700;
+
+            &:hover{
+                color: #9e9595;
+            }
+        }
+
+        .verification-error-msg{
+            font-size: 11px;
+            padding: 0 5px;
+        }
     }
 }

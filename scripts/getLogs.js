@@ -1,25 +1,27 @@
 $(document).ready(function(){
 	$.ajaxSetup({
-    type: "GET",
-    data: {},
-    dataType: 'json',
-    xhrFields: {
-       withCredentials: true
-    },
-    crossDomain: true
+	    type: "GET",
+	    data: {},
+	    dataType: 'json',
+	    xhrFields: {
+	       withCredentials: true
+	    },
+	    crossDomain: true
+	});
+
+	if($.cookie("slock") ){
+		getLogs();
+		window.getLogs = setInterval(getLogs, 10000);
+	} 
+
 });
 
-	if(getLogs("test@test.com")){
-	 	setInterval(function(){getLogs("test@test.com")}, 10000);
-	}
-
-});
-
-var getLogs = function(username){
-	var url = 'https://smartlockproject.herokuapp.com/api/getUserLogs';
+var getLogs = function(){
+	var url = 'https://smartlockproject.herokuapp.com/api/getUserLogs?token=';
+	var lockid = getUrlParam("lockid");
 
 	$.ajax({
-	   url: url,
+	   url: url+$.cookie("slock"),
 	   xhrFields: {
 	      withCredentials: true
 	   },
@@ -28,53 +30,68 @@ var getLogs = function(username){
 	   dataType: 'json',
 	   method: "GET",
 	   success: function(data){
-	        if(data.status == "error"){
-				$("#logContent").html("not logged in");
-				return false;
-			}
-			  console.dir(data.message);
-			  $("#logContent").empty();
+	   		var locks={};
+	   		switch(data.status){
+	   			case "error":
+	   				$("#logContent").html("not logged in");
+					clearInterval(window.getLogs);
+	   				break;
+	   			case "success":
+		   			if(!data.message ||!data.message.length){
+						$("#logContent").html("no logs");
+						clearInterval(window.getLogs);
+						return;
+					}
+					console.dir(data.message);
+				  $("#logContent").empty();
 
-			  //sort log according to the time - last log first
-			  data.message.sort(function(a, b) {
-			  return (new Date(b.time)) - (new Date(a.time))
-				});
+				  //sort log according to the time - last log first
+				  data.message.sort(function(a, b) {
+				  return (new Date(b.time)) - (new Date(a.time))
+					});
 
-			  for(var i=0; i<data.message.length; i++){
-			  	$("<p>"+JSON.stringify(data.message[i])+"</p>").appendTo("#logContent");
-			  }
+				  for(var i=0; i<data.message.length; i++){
+				  	if(lockid == data.message[i].lockid || !lockid){
+				  		var date = new Date(data.message[i].time);
+				  		var action = "did";
+				  		locks[data.message[i].lockid] = data.message[i].lockid;
+					  	var text = "<span>The username </span>"+ data.message[i].username + " <span>"+action+"</span> "+data.message[i].action + 
+					  	" <span>to lockid:</span>"+ data.message[i].lockid + 
+					  	" <span>at</span> " + date.getDate() + "/"+(date.getMonth()+1)+'/'+date.getFullYear()+" "+ ((date.getHours()<10)?'0':'') +date.getHours()+":"+ (date.getMinutes()<10?'0':'') +date.getMinutes();
+					  	$("<li>"+text+"</li>").appendTo("#logContent");	
+				  	}
+				  	
+				  }
 
-			  return true;
-			}
+				  var select = "<button id='reset'>RESET</button><form method='get' id='lockSelector'><select name='lockid'>";
+
+				for (var key in locks) {
+					select += "<option>"+key+"</option>";
+
+				  }
+
+				  select += "</select><button>SUBMIT</button></form>";
+
+				  $("#filter").html(select);
+
+				  $("#reset").click(function(){
+				  	location.href="/logs.html";
+				  })
+
+	   				break;
+	   		}
+
+		},
+		error:function(e){
+			console.log(e.responseText);
+			$("#logContent").html("Server Error");
+			clearInterval(window.getLogs);
+		}
 		});
-	// var jqxhr = $.get( url, function(data) {
-
-	// 	if(data.status == "error"){
-	// 		$("#logContent").html("not logged in");
-	// 		return false;
-	// 	}
-	//   console.dir(data.message);
-	//   $("#logContent").empty();
-
-	//   //sort log according to the time - last log first
-	//   data.message.sort(function(a, b) {
-	//   return (new Date(b.time)) - (new Date(a.time))
-	// 	});
-
-	//   for(var i=0; i<data.message.length; i++){
-	//   	$("<p>"+JSON.stringify(data.message[i])+"</p>").appendTo("#logContent");
-	//   }
-
-	//   return true;
-	// })
-	//   .done(function() {
-	//   //  alert( "second success" );
-	//   })
-	//   .fail(function(e) {
-	//     //alert( "error" );
-	//     console.dir(e);
-	//   })
-	//   .always(function() {
-	//     //alert( "finished" );
-	//   });
 };
+
+var writeAction = function(action){
+	return (action.toLowerCase().indexOf('permission')>-1 ||
+			action.toLowerCase().indexOf('mail')>-1 ||
+			action.toLowerCase().indexOf('physical')>-1)?"received" : "did";
+}
