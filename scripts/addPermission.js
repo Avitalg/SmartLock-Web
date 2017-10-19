@@ -122,7 +122,7 @@ var permissionType = function(){
 	var type = $("input[name=type]:checked").val();
 
 	switch(type){
-		case "1":
+		case "1":case "0":
 			$("input[name=freq][value='always'").prop('checked', true);
 			$("input[name=freq]").prop("disabled", "true");
 			$(".always").hide("slow");
